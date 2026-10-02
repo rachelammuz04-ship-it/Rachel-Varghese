@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rachel Varghese — Interior Architecture & Design Portfolio</title>
+  <meta name="description" content="Interior Design & Architecture Portfolio of Rachel Varghese featuring AutoCAD Plans, 3D Renders, Mood Boards, and Lighting Designs." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --fg: #f3efe7;
+      --muted: #9a958c;
+      --line: #2a2927;
+      --gold: #c9a06a;
+      --gold-l: #ecd3a4;
+      --gold-d: #8a6a3c;
+      --card-bg: #141417;
+      --ease: cubic-bezier(.32, .72, 0, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Archivo', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--gold); color: var(--bg); }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 4vw, 48px);
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .25em;
+      color: var(--muted);
+    }
+
+    .gold-t { color: var(--gold); }
+
+    .gradient {
+      background: linear-gradient(100deg, var(--gold-d), var(--gold-l) 40%, var(--gold) 62%, var(--gold-d));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: fill 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes fill { to { background-position: 200% center; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    section { border-top: 1px solid var(--line); }
+
+    /* HEADER / NAV */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(13, 13, 15, .85);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      display: flex;
+      height: 72px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .20em;
+    }
+
+    nav { display: flex; gap: 32px; font-size: 13px; color: var(--muted); }
+    nav a { transition: color .3s; }
+    nav a:hover { color: var(--fg); }
+
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 20px;
+      font-size: 13px;
+      transition: all .3s var(--ease);
+    }
+
+    .pill:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    /* HERO */
+    .hero { padding: 120px 0 96px; border: 0; }
+    .hero h1 {
+      margin-top: 24px;
+      font-weight: 800;
+      line-height: .92;
+      letter-spacing: -.02em;
+      font-size: clamp(3.5rem, 11vw, 9.5rem);
+      animation: rise .9s var(--ease) both;
+    }
+
+    .hero-row {
+      margin-top: 48px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .lead { max-width: 46ch; color: var(--muted); font-size: 18px; line-height: 1.6; }
+
+    .pad { padding: 112px 0; }
+
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 600; letter-spacing: -.01em; }
+    .big { font-weight: 800; line-height: .95; letter-spacing: -.02em; font-size: clamp(2.5rem, 6.5vw, 5.5rem); }
+
+    /* CARDS & GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 48px 32px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      transition: transform .4s var(--ease), border-color .4s var(--ease), box-shadow .4s var(--ease);
+      animation: rise .8s var(--ease) both;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold-d);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .6);
+    }
+
+    .card .ph {
+      overflow: hidden;
+      border-radius: 12px;
+      aspect-ratio: 4/3;
+      background: #1c1c21;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .7s var(--ease);
+    }
+
+    .card:hover img { transform: scale(1.05); }
+
+    .card .t { margin-top: 20px; display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+    .card h3 { font-size: 20px; font-weight: 600; color: var(--fg); }
+    .card .meta { margin-top: 8px; font-size: 11px; }
+    .card p { margin-top: 10px; font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+    /* SERVICES SPLIT */
+    .split { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; }
+    .split .r { border-left: 1px solid var(--line); padding-left: 48px; }
+
+    .services { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; }
+    .services div { border-top: 1px solid var(--line); padding-top: 20px; }
+    .services h3 { font-size: 18px; font-weight: 600; color: var(--fg); }
+    .services p { margin-top: 8px; font-size: 14px; color: var(--muted); }
+
+    /* CONTACT / FOOTER */
+    footer { border-top: 1px solid var(--line); background: #08080a; }
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding-top: 48px;
+      padding-bottom: 48px;
+    }
+
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .split { grid-template-columns: 1fr; }
+      .split .r { border-left: 0; padding-left: 0; }
+      .services { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="wrap nav">
+      <a href="#" class="brand">Rachel&nbsp;Varghese</a>
+      <nav>
+        <a href="#autocad">AutoCAD</a>
+        <a href="#renders">3D Renders</a>
+        <a href="#moodboards">Mood Boards</a>
+        <a href="#lighting">Lighting Plans</a>
+        <a href="#services">Services</a>
+      </nav>
+      <a href="#contact" class="pill">Get in Touch</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="mono" style="display:flex; gap:12px; align-items:center;">
+          <span style="width:8px; height:8px; border-radius:50%; background:var(--gold);"></span>
+          Interior Designer & Civil Engineer
+        </div>
+        <h1>
+          <span class="gradient">Rachel</span>
+          <span class="gradient" style="animation-delay:.3s;">Varghese.</span>
+        </h1>
+        <div class="hero-row">
+          <p class="lead">Crafting functional, aesthetic interior spaces with technical precision. Specializing in AutoCAD layout drafting, 3D photorealistic rendering, material mood boards, and lighting architecture.</p>
+          <a href="#renders" class="pill" style="padding:14px 28px; font-size:14px;">Explore Projects &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: AUTOCAD FLOOR PLANS & ELEVATIONS -->
+    <section id="autocad" class="pad">
+      <div class="wrap">
+        <span class="mono gold-t">01 / Technical Drawings</span>
+        <h2 class="big" style="margin-top:8px;"><span class="gradient">AutoCAD Floor Plans</span></h2>
+        <p class="lead" style="margin-top:16px;">Precise 2D architectural layouts, structural floor plans, wall sections, and detailed elevations.</p>
+
+        <div class="grid">
+          <article class="card">
+            <div class="ph">
+              <img src="images/autocad-ground-floor.jpg" alt="Ground Floor AutoCAD Plan" />
+            </div>
+            <div class="t">
+              <h3>Ground Floor Layout</h3>
+              <span class="mono">AutoCAD</span>
+            </div>
+            <p class="meta mono gold-t">Spatial Planning — 1,500 SqFt</p>
+            <p>Comprehensive ground floor layout showing wall measurements, structural grid lines, and room clearances.</p>
+          </article>
+
+          <article class="card">
+            <div class="ph">
+              <img src="images/autocad-first-floor.jpg" alt="First Floor AutoCAD Plan" />
+            </div>
+            <div class="t">
+              <h3>First Floor Layout</h3>
+              <span class="mono">AutoCAD</span>
+            </div>
+            <p class="meta mono gold-t">Residential Architecture</p>
+            <p>Upper floor structural arrangement detailing bedroom suites, staircase geometry, and terrace accessibility.</p>
+          </article>
+
+          <article class="card">
+            <div class="ph">
+              <img src="images/autocad-section-elevation.jpg" alt="Elevation and Section Drawing" />
+            </div>
+            <div class="t">
+              <h3>Section & Elevation Details</h3>
+              <span class="mono">AutoCAD</span>
+            </div>
+            <p class="meta mono gold-t">Cross-Section Documentation</p>
+            <p>Cross-sectional elevation drawings illustrating ceiling heights, wall thickness, and door/window opening thresholds.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: 3D VISUALIZATION & RENDERS -->
+    <section id="renders" class="pad">
+      <div class="wrap">
+        <span class="mono gold-t">02 / Visualization</span>
+        <h2 class="big" style="margin-top:8px;"><span class="gradient">3D Renders & Spaces</span></h2>
+        <p class="lead" style="margin-top:16px;">Photorealistic 3D interior renders created using SketchUp, 3ds Max, V-Ray, and Lumion.</p>
+
+        <div class="grid">
+          <article class="card">
+            <div class="ph">
+              <img src="images/render-living-room.jpg" alt="Modern Living Room 3D Render" />
+            </div>
+            <div class="t">
+              <h3>Modern Living Room</h3>
+              <span class="mono">3ds Max / Lumion</span>
+            </div>
+            <p class="meta mono gold-t">Residential Interior</p>
+            <p>Warm ambient lighting setup with custom paneling, plush seating arrangement, and natural light integration.</p>
+          </article>
+
+          <article class="card">
+            <div class="ph">
+              <img src="images/render-kitchen-dining.jpg" alt="Kitchen & Dining Render" />
+            </div>
+            <div class="t">
+              <h3>Contemporary Kitchen Suite</h3>
+              <span class="mono">SketchUp / V-Ray</span>
+            </div>
+            <p class="meta mono gold-t">Custom Cabinetry & Island</p>
+            <p>Bespoke kitchen island layout featuring quartz countertop textures, minimalist hardware, and integrated accent LED lighting.</p>
+          </article>
+
+          <article class="card">
+            <div class="ph">
+              <img src="images/render-bedroom.jpg" alt="Master Bedroom Render" />
+            </div>
+            <div class="t">
+              <h3>Minimalist Bedroom Suite</h3>
+              <span class="mono">Lumion / 3ds Max</span>
+            </div>
+            <p class="meta mono gold-t">Concept Interior</p>
+            <p>Soothing neutral palette, headboard wall treatment, integrated wardrobe styling, and accent lighting design.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: MOOD BOARDS & STYLING CONCEPTS -->
+    <section id="moodboards" class="pad">
+      <div class="wrap">
+        <span class="mono gold-t">03 / Materiality & Concept</span>
+        <h2 class="big" style="margin-top:8px;"><span class="gradient">Mood Boards & Styling</span></h2>
+        <p class="lead" style="margin-top:16px;">Curated color schemes, material swatches, fabric textures, and tactile interior concepts.</p>
+
+        <div class="grid">
+          <article class="card">
+            <div class="ph">
+              <img src="images/moodboard-materials.jpg" alt="Material Mood Board" />
+            </div>
+            <div class="t">
+              <h3>Earthy & Warm Material Board</h3>
+              <span class="mono">Concept</span>
+            </div>
+            <p class="meta mono gold-t">Finish Selection</p>
+            <p>Selection of oak wood, honed marble, micro-cement swatches, and matte brass finishes for high-end residential interiors.</p>
+          </article>
+
+          <article class="card">
+            <div class="ph">
+              <img src="images/moodboard-furniture.jpg" alt="Furniture and Decor Mood Board" />
+            </div>
+            <div class="t">
+              <h3>Living Space Furniture Selection</h3>
+              <span class="mono">Styling</span>
+            </div>
+            <p class="meta mono gold-t">FF&E Curation</p>
+            <p>Curated furniture, curved upholstery fabrics, statement wall mirror designs, and Scandinavian-inspired lighting fixtures.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: LIGHTING PLANS & FIXTURE LAYOUTS -->
+    <section id="lighting" class="pad">
+      <div class="wrap">
+        <span class="mono gold-t">04 / Electrical & Illumination</span>
+        <h2 class="big" style="margin-top:8px;"><span class="gradient">Lighting Plans & Layouts</span></h2>
+        <p class="lead" style="margin-top:16px;">Architectural lighting layouts, reflected ceiling plans (RCP), and illumination schedules.</p>
+
+        <div class="grid">
+          <article class="card">
+            <div class="ph">
+              <img src="images/lighting-rcp-plan.jpg" alt="Reflected Ceiling Plan" />
+            </div>
+            <div class="t">
+              <h3>Reflected Ceiling Plan (RCP)</h3>
+              <span class="mono">AutoCAD</span>
+            </div>
+            <p class="meta mono gold-t">Ceiling & Fixture Layout</p>
+            <p>Detailed switch circuits, recessed spot-light placement, ceiling cove detailing, and pendant light locations.</p>
+          </article>
+
+          <article class="card">
+            <div class="ph">
+              <img src="images/lighting-mood-concept.jpg" alt="Lighting Mood Concept" />
+            </div>
+            <div class="t">
+              <h3>Illumination & Mood Concept</h3>
+              <span class="mono">Lighting Design</span>
+            </div>
+            <p class="meta mono gold-t">Ambient & Accent Lighting</p>
+            <p>Layered lighting scheme balancing 3000K warm ambient fixtures, task desk lights, and decorative wall sconces.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES & CAPABILITIES -->
+    <section id="services" class="pad">
+      <div class="wrap split">
+        <div>
+          <span class="mono gold-t">Capabilities</span>
+          <h2 class="big" style="margin-top:8px;"><span class="gradient">Services Provided</span></h2>
+          <p class="lead" style="margin-top:24px;">Combining civil engineering precision with high-end interior aesthetics.</p>
+        </div>
+        <div class="r">
+          <div class="services">
+            <div>
+              <h3>01. Spatial Planning</h3>
+              <p>2D AutoCAD floor plans, wall section drawings, and structural elevations.</p>
+            </div>
+            <div>
+              <h3>02. 3D Visualization</h3>
+              <p>Photorealistic 3D interior rendering with SketchUp, 3ds Max, V-Ray, and Lumion.</p>
+            </div>
+            <div>
+              <h3>03. Material Curation</h3>
+              <p>Custom mood boards, tactile finish samples, color schemes, and FF&E selection.</p>
+            </div>
+            <div>
+              <h3>04. Lighting Layouts</h3>
+              <p>Reflected ceiling plans, architectural fixture schedules, and circuit layouts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="wrap">
+      <div>
+        <h3 style="font-size:24px; font-weight:700;" class="gradient">Rachel Varghese</h3>
+        <p class="mono" style="margin-top:8px;">Interior Designer & Civil Engineer</p>
+      </div>
+      <div>
+        <p class="mono">&copy; 2026 Rachel Varghese. All rights reserved.</p>
+      </div>
+      <div>
+        <a href="#top" class="pill" style="font-size:12px;">Back to top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
